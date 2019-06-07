@@ -1,19 +1,19 @@
-import {createAppContainer, createStackNavigator} from 'react-navigation';
-import HabitosPage from './src/pages/HabitosPage';
+import {createAppContainer, createBottomTabNavigator} from 'react-navigation';
+import SetupNoC from './src/pages/SetupNoC';
 import LoginPage from './src/pages/LoginPage';
 
-const AppNavigator = createStackNavigator(
+const AppNavigator = createBottomTabNavigator(
   {
     'Login':{
       screen: LoginPage,
       navigationOptions:{
-        header: null
+        tabBarVisible: false
       }
     },
     'Main':{
-      screen: HabitosPage,
+      screen: SetupNoC,
       navigationOptions:{
-        title: 'Viva o Séndy!',
+        title: 'Setup NoC',
         headerTitleStyle:{
           textAlign:'left',
           fontSize: 30,
@@ -40,6 +40,7 @@ const AppNavigator = createStackNavigator(
   }
 );
 
+// const AppContainer = createAppContainer(AppNavigator);
 const AppContainer = createAppContainer(AppNavigator);
 
 export default AppContainer;

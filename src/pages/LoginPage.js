@@ -1,35 +1,53 @@
-import React from 'react';
+import React from 'react-native';
 import {TextInput, StyleSheet, Button, ScrollView, View, Image, KeyboardAvoidingView, ActivityIndicator, Alert} from 'react-native';
 import FormRow from '../components/FormRow';
 import firebase from 'firebase';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 
 export default class LoginPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            email:'',
-            senha :'',
+            email:'leobeckerdaluz@gmail.com',
+            senha :'caio123456',
             isLoading: false,
             message: "",
         }   
     }
 
     acessarApp(){
-        this.setState({loading: false});
-        this.props.navigation.replace('Main');
+        this.setState({isLoading: false});
+        
+        console.log("Entrou no acessarApp")
+
+        let resetActions = StackActions.reset({
+               index: 0,
+             actions: [
+                 NavigationActions.navigate({routeName: 'Main'}),
+             ]
+         });
+        
+         this.props.navigation.dispatch(resetActions);
+         
+         this.props.navigation.navigate('Main');
+
+
+        //  navigation.dispatch(NavigationActions.navigate({ routeName: 'Main' }));
     }
 
     componentDidMount() {
+        // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyAvYvcWtrpKByIMzHV_mBIN9Cqh5edcqDA",
-            authDomain: "my-habit-timeline-lbluz.firebaseapp.com",
-            databaseURL: "https://my-habit-timeline-lbluz.firebaseio.com",
-            projectId: "my-habit-timeline-lbluz",
-            storageBucket: "my-habit-timeline-lbluz.appspot.com",
-            messagingSenderId: "872395394732",
-            appId: "1:872395394732:web:fafdc533c6070d2b"
+            apiKey: "AIzaSyD4DPd_UG5xm95WO2IRHvDrAPiHWmgmmiI",
+            authDomain: "noc-react-js-app.firebaseapp.com",
+            databaseURL: "https://noc-react-js-app.firebaseio.com",
+            projectId: "noc-react-js-app",
+            storageBucket: "noc-react-js-app.appspot.com",
+            messagingSenderId: "166276759013",
+            appId: "1:166276759013:web:8ca8b5960dfb40fb"
         };
+        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     }
 
@@ -38,15 +56,16 @@ export default class LoginPage extends React.Component{
         const {email, senha} = this.state;
     
         console.log("ENTROU AQUI");
-         
+        
         return firebase
-            .auth()
-            .signInWithEmailAndPassword(email, senha)
-            .then(user => {
-                console.log("Acesso Permitido!");
-                this.acessarApp();
-            })
-            .catch(error => {
+        .auth()
+        .signInWithEmailAndPassword(email, senha)
+        .then(user => {
+            console.log("Acesso Permitido!");
+            this.acessarApp();
+        })
+        .catch(error => {
+            console.log(error.code);
                 this.setState({
                     message: this.getMsgByErrorCode(error.code),
                     isLoading: false
@@ -71,6 +90,7 @@ export default class LoginPage extends React.Component{
             case "auth/weak-password":
                 return "Senha muito fraca!";
             default:
+                console.log(errorCode);
                 return "Erro desconhecido!"
         }
     }
@@ -164,7 +184,7 @@ export default class LoginPage extends React.Component{
             <KeyboardAvoidingView behavior="padding" enabled style={{flex:1}}>
                 <ScrollView style={styles.container}>
                     <Image
-                        source = {require('../img/logo.jpeg')}
+                        source = {require('../img/logo2.jpeg')}
                         style={styles.logo}
                     />
                     <FormRow>
@@ -196,7 +216,7 @@ export default class LoginPage extends React.Component{
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#2C1526',
+        backgroundColor: 'black',
         // paddingRight:10,
         // paddingLeft:10
     },
@@ -205,7 +225,7 @@ const styles = StyleSheet.create({
         paddingRight:5
     },
     btn: {
-        paddingTop: 20,
+        paddingBottom:20,
         fontSize:11,
     },
     logo:{
