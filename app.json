@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "NoC Mada",
-    "slug": "habits_app",
+    "name": "App_NoC",
+    "slug": "noc_app",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [

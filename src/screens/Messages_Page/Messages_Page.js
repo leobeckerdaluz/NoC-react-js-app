@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
-export default class HelloWorldLogin extends Component {
+export default class Messages_Page extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Login Page!</Text>
+        <Text>Messages Page!</Text>
       </View>
     );
   }
@@ -196,7 +196,7 @@ export default class HelloWorldLogin extends Component {
 //             <KeyboardAvoidingView behavior="padding" enabled style={{flex:1}}>
 //                 <ScrollView style={styles.container}>
 //                     <Image
-//                         source = {require('../img/logo2.jpeg')}
+//                         source = {require('../images/logo2.jpeg')}
 //                         style={styles.logo}
 //                     />
 //                     <FormRow>

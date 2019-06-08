@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-
 import { Platform, StatusBar } from "react-native";
 import {
   createBottomTabNavigator,
@@ -9,40 +6,33 @@ import {
 } from "react-navigation";
 import { FontAwesome } from "react-native-vector-icons";
 
-import Page1 from "./pages/Page1";
-import Page2 from "./pages/Page2";
-import Page3 from "./pages/Page3";
 
-import SetupNoC from './pages/SetupNoC';
-import LoginPage from './pages/LoginPage';
+// Importa as páginas a serem utilizadas
+import Login_Page from './screens/Login_Page/Login_Page';
+import SetupNoC_Page from './screens/SetupNoC_Page/SetupNoC_Page';
+import Messages_Page from "./screens/Messages_Page/Messages_Page";
+import Reports_Page from "./screens/Reports_Page/Reports_Page";
 
-const headerStyle = {
-  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-};
 
+// Stack Navigator contendo a tela de login
 const SignedOut = createStackNavigator(
   {
     SignUp: {
-      screen: LoginPage,
+      screen: Login_Page,
       navigationOptions: {
-        title: "Sign Up",
-        headerStyle
+        title: "Login In",
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       }
     },
-    // SignIn: {
-    //   screen: Page2,
-    //   navigationOptions: {
-    //     title: "Sign In",
-    //     headerStyle
-    //   }
-    // }
   }
 );
 
+
+// Tab Navigator contendo as páginas de uso do app
 const SignedIn = createBottomTabNavigator(
   {
     SetupNoC: {
-      screen: Page1,
+      screen: SetupNoC_Page,
       navigationOptions: {
         tabBarLabel: "SetupNoC",
         // tabBarIcon: ({ tintColor }) => (
@@ -51,18 +41,18 @@ const SignedIn = createBottomTabNavigator(
       }
     },
     Messages: {
-      screen: Page2,
+      screen: Messages_Page,
       navigationOptions: {
-        tabBarLabel: "Messages", 
+        tabBarLabel: "Messages_Page", 
         // tabBarIcon: ({ tintColor }) => (
         //   <FontAwesome name="user" size={30} color={tintColor} />
         // )
       }
     },
     Stats: {
-      screen: Page3,
+      screen: Reports_Page,
       navigationOptions: {
-        tabBarLabel: "Stats", 
+        tabBarLabel: "Reports_Page", 
         // tabBarIcon: ({ tintColor }) => (
         //   <FontAwesome name="user" size={30} color={tintColor} />
         // )
@@ -79,6 +69,7 @@ const SignedIn = createBottomTabNavigator(
 );
 
 
+// Switch Navigator contendo as 2 opções de navegação do app: Login e a TabBar
 export const createRootNavigator = (signedIn = false) => {
     return createSwitchNavigator(
         {
@@ -90,8 +81,8 @@ export const createRootNavigator = (signedIn = false) => {
             }
         },
         {
-            // initialRouteName: signedIn ? "SignedIn" : "SignedOut"
-            initialRouteName: "SignedIn"
+            initialRouteName: signedIn ? "SignedIn" : "SignedOut"
+            // initialRouteName: "SignedIn"
         }
     );
 };
