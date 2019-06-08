@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 10222,
-  "expoServerNgrokUrl": "https://xn-u99.leobeckerdaluz.noc-react-js-app.exp.direct",
-  "packagerNgrokUrl": "https://packager.xn-u99.leobeckerdaluz.noc-react-js-app.exp.direct",
-  "ngrokPid": 10269
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

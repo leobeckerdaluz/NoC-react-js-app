@@ -5,7 +5,7 @@ export default class HelloWorldLogin extends Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Hello, world!</Text>
+        <Text>Login Page!</Text>
       </View>
     );
   }
@@ -48,7 +48,7 @@ export default class HelloWorldLogin extends Component {
 //         //  navigation.dispatch(NavigationActions.navigate({ routeName: 'Main' }));
 //     }
 
-//     componentDidMount() {
+    // componentDidMount() {
 //         // Your web app's Firebase configuration
 //         var firebaseConfig = {
 //             apiKey: "AIzaSyD4DPd_UG5xm95WO2IRHvDrAPiHWmgmmiI",
@@ -61,7 +61,7 @@ export default class HelloWorldLogin extends Component {
 //         };
 //         // Initialize Firebase
 //         firebase.initializeApp(firebaseConfig);
-//     }
+    // }
 
 //     login(){
 //         this.setState({isLoading: true, message:""});
@@ -190,7 +190,7 @@ export default class HelloWorldLogin extends Component {
 //     }
 
 //     render(){
-//         this.renderMessage();
+//         // this.renderMessage();
 
 //         return(
 //             <KeyboardAvoidingView behavior="padding" enabled style={{flex:1}}>
@@ -205,7 +205,7 @@ export default class HelloWorldLogin extends Component {
 //                             keyboardType= "email-address"
 //                             placeholder = "user@email.com"
 //                             value = {this.state.email}
-//                             onChangeText = {value => this.onChangeHandler('email',value)}
+//                             // onChangeText = {value => this.onChangeHandler('email',value)}
 //                         />
 //                     </FormRow>
 //                     <FormRow>
@@ -214,11 +214,11 @@ export default class HelloWorldLogin extends Component {
 //                             placeholder="**************"
 //                             secureTextEntry
 //                             value = {this.state.senha}
-//                             onChangeText = {value => this.onChangeHandler('senha',value)}
+//                             // onChangeText = {value => this.onChangeHandler('senha',value)}
 //                         />
 //                     </FormRow>
 //                     <View>
-//                         {this.renderButton()}
+//                         {/* {this.renderButton()} */}
 //                     </View>
 //                 </ScrollView>
 //             </KeyboardAvoidingView>
