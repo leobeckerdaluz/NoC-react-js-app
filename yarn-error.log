@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /home/bull/.npm-global/bin/yarn add react-navigation
+  /usr/bin/node /home/bull/.npm-global/bin/yarn add firebase
 
 PATH: 
   /home/bull/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/bull/git/NoC-react-js-app/node_modules/.bin/esparse'
+  Error: EACCES: permission denied, unlink '/home/bull/git/NoC-react-js-app/node_modules/.bin/atob'
 
 npm manifest: 
   {

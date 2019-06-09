@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://xn-u99.leobeckerdaluz.noc-react-js-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.xn-u99.leobeckerdaluz.noc-react-js-app.exp.direct",
+  "ngrokPid": 24613
 }
