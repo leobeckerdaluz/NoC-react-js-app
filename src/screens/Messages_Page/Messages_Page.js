@@ -2,51 +2,78 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
 import styles from './styles'
 import msg_history from './msg_history.json'
+
 export default class Messages_Page extends Component {
-  
-  constructor(props){
+
+  constructor(props) {
     super(props);
 
-    this.state= {
-      source:'',
-      target:'',
+    state = {
+      source: '',
+      target: '',
       msg: '',
       msgHistory: []
     }
   }
 
 
-  componentDidMount(){
-    this.setState({msgHistory: msg_history});
+  componentDidMount() {
+    this.setState({ msgHistory: msg_history });
   }
 
 
 
   selectItem = item => {
-    console.log(`dsajoijdsaoijdsa ${item}`);
-    this.setState({source: item.source.toString(), target: item.target.toString(), msg: item.msg});
+    const { source, target, msg } = item;
+    this.setState({
+      source,
+      target,
+      msg
+    });
+
+    console.log(`${source}`);
   }
 
-  renderItem = ({item}) => (
+
+
+  btsend() {
+    const msg = {
+      src: this.state.source,
+      target: this.state.target,
+      msg: this.state.msg
+    }
+    BluetoothSerial.write(msg)
+      .then((res) => {
+        console.log(res);
+        console.log('Sucessfuly wrote to device');
+        this.setState({ connected: true })
+      })
+      .catch((err) => console.log(err.message));
+  }
+
+
+
+
+  renderItem = ({ item }) => (
     <View>
       <TouchableOpacity style={styles.list} onPress={() => this.selectItem(item)}>
         <Text>
           {item.dt} - {item.msg} - ({item.source}) to - ({item.target})
         </Text>
       </TouchableOpacity>
-    </View>    
+    </View>
   );
-  handleSource = (source) =>{
+  handleSource = (source) => {
     // const source = src;
-    this.setState({source});
+    this.setState({ source });
   }
-  handleTarget = (target) =>{
+  handleTarget = (target) => {
     // const target = tg;
-    this.setState({target});
+    this.setState({ target });
   }
 
-  handleMsg = (msg) =>{
-    this.setState({msg});
+  handleMsg = (msg) => {
+    this.setState({ msg });
   }
 
   render() {
@@ -56,9 +83,8 @@ export default class Messages_Page extends Component {
           <Text style={styles.text}>Source: </Text>
           <TextInput style={styles.input}>
             <TextInput style={styles.input}
-              onChangeText = {(text) => this.handleSource(text)}
-              // value = {this.state.source}>
-            >
+              onChangeText={(text) => this.handleSource(text)}
+              value={String(this.state.source)}>
             </TextInput>
           </TextInput>
         </View>
@@ -66,9 +92,8 @@ export default class Messages_Page extends Component {
           <Text style={styles.text}>Target: </Text>
           <TextInput style={styles.input}>
             <TextInput style={styles.input}
-              onChangeText = {(text) => this.handleTarget(text)}
-              value = {this.state.target}>
-              
+              onChangeText={(text) => this.handleTarget(text)}
+              value={String(this.state.target)}>
             </TextInput>
           </TextInput>
         </View>
@@ -77,13 +102,14 @@ export default class Messages_Page extends Component {
           <TextInput style={styles.input}>
 
             <TextInput style={styles.input}
-              onChangeText = {(text) => this.handleMsg(text)}
-              value = {this.state.msg}>
+              onChangeText={(text) => this.handleMsg(text)}
+              value={this.state.msg}>
             </TextInput>
-            
+
           </TextInput>
         </View>
-        <TouchableOpacity style={styles.inputContainer}>
+        <TouchableOpacity style={styles.inputContainer}
+        onPress = {btsend()}>
           <Text>Outro botão q faz alguma coisa</Text>
         </TouchableOpacity>
 

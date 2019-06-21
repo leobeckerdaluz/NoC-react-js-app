@@ -52,7 +52,7 @@ export default class BT_Devices extends React.Component {
                 .then((unpairedDevices) => {
                     const uniqueDevices = _.uniqBy(unpairedDevices, 'id');
                     console.log(uniqueDevices);
-                    this.setStated({ unpairedDevices: uniqueDevices, discovering: false })
+                    this.setState({ unpairedDevices: uniqueDevices, discovering: false })
                 })
                 .catch((err) => console.log(err.message))
         }
@@ -90,7 +90,7 @@ export default class BT_Devices extends React.Component {
             BluetoothSerial.list()
         ])
             .then((values) => {
-                const [isEnabled, device] = values;
+                const [isEnabled, devices] = values;
                 this.setState({ isEnabled, devices });
             });
 
