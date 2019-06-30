@@ -22,17 +22,11 @@ export default class Messages_Page extends Component {
     
     firebaseFunctions.initFirebase();
 
-    //get history
-    const a = firebaseFunctions.alguma("/Messages", complete);
-    console.log("vai printa oq recebeu\n");
-    console.log(a);
-    console.log("\n\n\n\nnprintou");
-    // firebase.initializeApp(firebase_credentials);
   }
 
 
   
-
+ 
 
   selectItem = item => {
     const { source, target, msg } = item;
@@ -50,7 +44,7 @@ export default class Messages_Page extends Component {
   btsend = () => {
     const path = "Messages";
     var date = new Date();
-    date = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    date = `${date.getDate()}/${date.getMonth() +1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     const msg = {
       'src': this.state.source,
       'target': this.state.target,
@@ -59,7 +53,7 @@ export default class Messages_Page extends Component {
     }
     
     console.log(`Will send {${this.state.source}} {${this.state.target}} to firebase ${path} date: ${date}`);
-    firebaseFunctions.postToFirebase(msg,path);
+    firebaseFunctions.pushToFirebase(msg,path);
     
   }
 
@@ -88,18 +82,22 @@ export default class Messages_Page extends Component {
     this.setState({ msg });
   }
 
+  
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Text style={styles.text}>Source: </Text>
           <TextInput style={styles.input}
+            keyboardType="numeric"
             onChangeText={(text) => this.handleSource(text)}>
           </TextInput>
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.text}>Target: </Text>
           <TextInput style={styles.input}
+            keyboardType="numeric"
             onChangeText={(text) => this.handleTarget(text)}>
           </TextInput>
         </View>
@@ -113,7 +111,7 @@ export default class Messages_Page extends Component {
         </View>
         <TouchableOpacity style={styles.inputContainer}
           onPress={this.btsend}>
-          <Text>Outro botão q faz alguma coisa</Text>
+          <Text>Send</Text>
         </TouchableOpacity>
         {/* 
         <FlatList

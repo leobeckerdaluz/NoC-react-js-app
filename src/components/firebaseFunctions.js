@@ -8,7 +8,7 @@ export function initFirebase(){
     }
 }
 
-export function postToFirebase(data, path){
+export function pushToFirebase(data, path){
     firebase.database().ref(path).push({ data })
     .then((data)=>{
         //success callback
@@ -19,6 +19,16 @@ export function postToFirebase(data, path){
     })
   }
 
+  export function setToFirebase(data, path){
+    firebase.database().ref().child(path).set({ data })
+    .then((data)=>{
+        //success callback
+        console.log('data ' , data)})
+    .catch((error)=>{
+        //error callback
+        console.log('error ' , error)
+    })
+  }
 export const alguma = function getDataFrom(path){    
     var con = firebase.database().ref(path);    
     var ret;

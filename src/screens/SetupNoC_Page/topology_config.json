@@ -1,18 +1,14 @@
 [
     {
-        "id": 0,
-        "nome": "Mesh 1D"
+        "id": "MESH",
+        "nome": "Mesh"
     },
     {
-        "id": 1,
-        "nome": "Mesh 2D"
+        "id": "ANEL_1D",
+        "nome": "Anel 1D"
     },
     {
-        "id": 2,
-        "nome": "Mesh 3D"
-    },
-    {
-        "id": 3,
-        "nome": "Mesh 4D"
-    }    
+        "id": "ANEL_2D",
+        "nome": "Anel 2D"
+    }
 ]
