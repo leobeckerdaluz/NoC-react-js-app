@@ -37,7 +37,7 @@ export default class SetupNoC_Page extends Component {
 
   sendToFirebase = () =>{  
     const datas = {
-      n_y: this.state.noc_x,
+      x_y:  parseInt(this.state.noc_x),
       topologia: this.state.selectedTop,
     }
 
